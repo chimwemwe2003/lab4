@@ -3,14 +3,64 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('images/image1');
-    background-size: cover;
-    background-position: center;
+   
 }
 
 header {
     background-color: rgba(51, 51, 51, 0.8);
     color: white;
+    padding: 10px 0;
+    position: relative;
+}
+
+.theme-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-right: 20px;
+}
+
+.theme-icon:hover {
+    color: #ddd;
+}
+
+.faq-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(51, 51, 51, 0.9);
+    color: white;
+    padding: 10px;
+    z-index: 100;
+}
+
+.faq-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.faq-content.expanded {
+    max-height: 500px;
     padding: 10px 0;
 }
 
@@ -75,19 +125,72 @@ main {
 }
 
 /* Contact Form Styles */
-form {
-    display: flex;
-    flex-direction: column;
+.contact-form {
+    max-width: 800px;
+    margin: 0 auto;
     padding: 20px;
 }
 
+.form-group {
+    margin-bottom: 20px;
+}
+
 form label {
-    margin: 10px 0 5px;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 form input, form textarea {
-    padding: 10px;
-    margin-bottom: 10px;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 5px;
+}
+
+form input:focus, form textarea:focus {
+    border-color: #555;
+    box-shadow: 0 0 5px rgba(85, 85, 85, 0.3);
+    outline: none;
+}
+
+form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+/* Validation styles */
+input:invalid, textarea:invalid {
+    border-color: #ff6b6b;
+}
+
+input:valid, textarea:valid {
+    border-color: #51cf66;
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 10px;
+    }
 }
 
 /* Media Queries */
@@ -122,4 +225,43 @@ button {
 
 button:hover {
     background-color: #555;
+}
+
+.dark-theme {
+    background-color: #121212;
+    color: #f0f0f0;
+    }
+/* FAQ Dropdown Styles */
+.faq-item {
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0;
+}
+
+.question {
+    cursor: pointer;
+    position: relative;
+    padding-right: 30px;
+}
+
+.question::after {
+    content: '▼';
+    position: absolute;
+    right: 0;
+    transition: transform 0.3s ease;
+}
+
+.question.expanded::after {
+    transform: rotate(180deg);
+}
+
+.answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 20px;
+}
+
+.answer.visible {
+    max-height: 500px;
+    padding-top: 10px;
 }
